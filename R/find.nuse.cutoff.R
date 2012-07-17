@@ -1,22 +1,26 @@
-## Function to take a affyPLM object obtained from fitting fitPLM, and perform NUSE
-## plots, identifying outlier based on various measure based on medians and IQR of
-## the normalised-unscaled-standard-errors that NUSE calculates
-##
-## Parameters:
-##     x: an rmaPLM object which has at least the standard errors stored
-##     file: a pdf file to plot the nuse plots to (NULL means plot to dev.current())
-##     nplots: If x has many samples, it may be useful to split the it into nplots
-##     outlier.col: The colour to use for the outlying arrays
-##     type: "plot" means do the plots and invisibly return the outlier arrays;
-##           "outliers" means don't do the plots and return the outlier arrays.
-##
-## Value:
-##     A list where each element is a numerical vector of indices into the columns/samples of x
-##     that are 'outlier arrays'. The names of each element in the list indicate the threshold
-##     test that was applied.
-##
-## Mark Cowley, 8 Nov 2005
-##
+#' find a NUSE cutoff
+#' 
+#' Take a \code{affyPLM} object obtained from fitting \code{\link[affyPLM]{fitPLM}}, and perform
+#' \code{NUSE} plots, identifying outlier based on various measure based on medians
+#' and IQR of the normalised-unscaled-standard-errors that NUSE calculates
+#' 
+#' @param x an rmaPLM object which has at least the standard errors stored
+#' @param file a pdf file to plot the nuse plots to (NULL means plot to
+#' dev.current())
+#' @param nplots If x has many samples, it may be useful to split the it into
+#' nplots
+#' @param outlier.col The colour to use for the outlying arrays
+#' @param type \dQuote{plot} means do the plots and invisibly return the outlier
+#'  arrays; \dQuote{outliers} means don't do the plots and return the outlier arrays.
+#' 
+#' @return A \code{list} where each element is a \code{numeric vector} of indices into the
+#' columns/samples of x that are 'outlier arrays'. The names of each element in
+#' the list indicate the threshold test that was applied.
+#' 
+#' @author Mark Cowley, 8 Nov 2005
+#' @export
+#' @importFrom affyPLM NUSE
+#' @importFrom mjcgraphics pdf.A4
 find.nuse.cutoff <- function(x, file=NULL, nplots=1, outlier.col="red", type=c("plot", "outliers")) {
     if( type[1] == "plot" && !is.null(file) )
         pdf.A4(file)
@@ -36,7 +40,8 @@ find.nuse.cutoff <- function(x, file=NULL, nplots=1, outlier.col="red", type=c("
     if( type[1] == "plot" ) {
         nuse(x, col=col, main="Threshold median above average median + 1sd of median", nplots=nplots)
         abline(h=mean(nuse[1,]) + sd(nuse[1,]), lty=3, col="purple")
-        legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        # legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        legend("topright", legend=sum(col==outlier.col), bty="n", fill=outlier.col)
     }
 
     col=rep("white", ncol(nuse))
@@ -46,7 +51,8 @@ find.nuse.cutoff <- function(x, file=NULL, nplots=1, outlier.col="red", type=c("
     if( type[1] == "plot" ) {
         nuse(x, col=col, main="Threshold median above average median", nplots=nplots)
         abline(h=mean(nuse[1,]), lty=3, col="purple")
-        legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        # legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        legend("topright", legend=sum(col==outlier.col), bty="n", fill=outlier.col)
     }
 
     col=rep("white", ncol(nuse))
@@ -56,7 +62,8 @@ find.nuse.cutoff <- function(x, file=NULL, nplots=1, outlier.col="red", type=c("
     if( type[1] == "plot" ) {
         nuse(x, col=col, main="Threshold median above median of the medians", nplots=nplots)
         abline(h=median(nuse[1,]), lty=3, col="purple")
-        legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        # legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        legend("topright", legend=sum(col==outlier.col), bty="n", fill=outlier.col)
     }
 
     ## use IQR to determine which are the bad arrays
@@ -66,7 +73,8 @@ find.nuse.cutoff <- function(x, file=NULL, nplots=1, outlier.col="red", type=c("
 
     if( type[1] == "plot" ) {
         nuse(x, col=col, main="Threshold IQR above average IQR", nplots=nplots)
-        legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        # legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        legend("topright", legend=sum(col==outlier.col), bty="n", fill=outlier.col)
     }
 
     col=rep("white", ncol(nuse))
@@ -75,7 +83,8 @@ find.nuse.cutoff <- function(x, file=NULL, nplots=1, outlier.col="red", type=c("
 
     if( type[1] == "plot" ) {
         nuse(x, col=col, main="Threshold IQR above median IQR", nplots=nplots)
-        legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        # legend.TR(sum(col==outlier.col), bty="n", fill=outlier.col)
+        legend("topright", legend=sum(col==outlier.col), bty="n", fill=outlier.col)
     }
 
     if( type[1] == "plot" && !is.null(file) )
