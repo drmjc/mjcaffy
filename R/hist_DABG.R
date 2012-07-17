@@ -13,6 +13,7 @@
 #' @return none.
 #' @author Mark Cowley
 #' @export
+#' @importFrom mjcgraphics colour.step axis.percentiles hgrid
 hist_DABG <- function(dabg, 
 					  thresholds=c(1e-05, 1e-04, 1e-03, 0.01, 0.1, 1),
 					  col=colour.step("green", "red", steps=length(thresholds)), 

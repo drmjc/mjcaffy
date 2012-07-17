@@ -1,43 +1,25 @@
-## Function to import a CEL file into an R data.frame.
-##
-## The file can be unzipped, or gzipped.
-## Since we are only interested in the [INTENSITY] section, we need to find where to start
-## and stop reading the file. If the type is one of the known array types, please specify
-## this in the 'type' parameter. If left as NULL, then each file will be searched for when
-## to start and stop reading which takes longer.
-##
-## Parameters:
-##     x: The file name. Can be a vector of filenames.
-##     type: MG_U74Av2 | HG_Focus | RAE230A | NULL
-##     skip: The number of lines to skip (if known)
-##     numlines: The number of lines in the [INTENSITY] section to read (if known)
-##
-##   Leave type, skip and numlines as NULL, 24, NULL for their values to be auto. determined.
-##
-## Value:
-##     if x is only 1 file, then a data.frame is returned with 5 columns:
-##        c("X", "Y", "mean", "sd", "npixels")
-##     if length(x) > 1 then a list of data.frames is returned.
-##
-## Mark Cowley, 28 Oct 2005
-##
-##
-## A typical CEL file looks like this....
-##     ...
-##     [INTENSITY]
-##     NumberCells=200704
-##     CellHeader=X	Y	MEAN	STDV	NPIXELS
-##     0	  0	964.8	233.4	 16
-##     1	  0	4954.8	480.9	 16
-##     ...
-##     446	447	4883.3	696.9	 16
-##     447	447	63.8	12.3	 16
-##
-##     [MASKS]
-##     NumberCells=0
-##     CellHeader=X	Y
-##     ...
-##
+#' Function to import an Affymetrix CEL file
+#' 
+#' The file can be unzipped, or gzipped.
+#' Since we are only interested in the [INTENSITY] section, we need to find
+#' where to start
+#' and stop reading the file. If the type is one of the known array types,
+#' please specify
+#' this in the 'type' parameter. If left as NULL, then each file will be
+#' searched for when
+#' to start and stop reading which takes longer.
+#' 
+#' @param x The file name. Can be a vector of filenames.
+#' @param type MG_U74Av2 | HG_Focus | RAE230A | NULL
+#' @param skip The number of lines to skip (if known)
+#' @param numlines The number of lines in the [INTENSITY] section to read (if
+#' known)
+#' 
+#' @return if x is only 1 file, then a \code{data.frame} is returned with 5 columns:
+#' "X", "Y", "mean", "sd", "npixels"
+#' if length(x) > 1 then a \code{list} of \code{data.frames} is returned.
+#' @author Mark Cowley, 28 Oct 2005
+#' @export
 readCEL <- function(x, type=NULL, skip=24, numlines=NULL) {
 
     if( length(x) > 1 ) {
@@ -49,7 +31,7 @@ readCEL <- function(x, type=NULL, skip=24, numlines=NULL) {
     else {
         ## File can be gzipped
         if( length( grep(".gz", x, ignore.case=T) ) > 0 ) {
-            tmpname <- sub(".GZ", ".gz", p(tempdir(), "/", basename(x)))
+            tmpname <- sub(".GZ", ".gz", paste(tempdir(), "/", basename(x), sep=""))
             file.copy(x, tmpname )
             file.gunzip( tmpname )
             cel <- readCEL( sub(".gz", "", tmpname) ) ## recursion

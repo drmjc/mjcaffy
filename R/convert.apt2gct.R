@@ -1,3 +1,5 @@
+#' convert RMA & DABG objects into gct & res files
+#' 
 #' convert RMA & DABG objects into gct & res files, for all
 #' non-control probes, and those expressed probes with Pcount>0
 #' 
@@ -25,7 +27,7 @@
 #' 
 #' @author Mark Cowley, 2010-07-06
 #' @export
-#' @importFrom microarrays import.APT import.dabg
+#' @importFrom metaGSEA import.gsea.clm gsea.convert.clm2cls import.gsea.chip chip2description export.gsea.gct export.broad.res
 convert.apt2gct <- function(
 	rma.apt.file="./normalised/rma.summary.txt",
 	dabg.apt.file="./normalised/dabg.summary.txt",

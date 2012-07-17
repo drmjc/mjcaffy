@@ -24,7 +24,7 @@ parse.affy.gff <- function(gff, key) {
     #
     rows <- grep(key, gff$group)
     values <- gff$group[rows]
-    values <- sub(p("^.*", key, " "), "", values)
+    values <- sub(paste("^.*", key, " ", sep=""), "", values)
     values <- trim(sub(";.*", "", values)) # last entry is not followed by semicolon, but may have trailing space.
     
     res <- gff

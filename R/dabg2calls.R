@@ -1,3 +1,5 @@
+#' Convert DABG P-values into P/M/A calls
+#' 
 #' Convert DABG P-values into P/M/A calls, by hard-thresholding at two
 #' threshold, one for "Present", and "Marginal"
 #' 

@@ -42,9 +42,11 @@ import.APT <- function(file, keep.first.column=FALSE, check.names=FALSE, ...) {
 	return( aptfile )	
 }
 
-#' Import DABG results.
+#' Import DABG results
+#' 
 #' Import a \dQuote{dabg.summary.txt} file from running the Affymetrix
 #' Detected Above Background method (DABG), skipping the header
+#' 
 #' @param file the path to the DABG file
 #' @param \dots arguments passed to \code{\link{import.APT}}
 #' @return a \code{data.frame} containing DABG P-values.

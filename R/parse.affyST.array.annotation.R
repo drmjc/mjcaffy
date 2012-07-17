@@ -37,6 +37,7 @@
 #' @author Mark Cowley, 2008-07-24
 #' @export
 #' @importFrom genomics make.ucsc.string
+#' @importFrom excelIO write.xls
 parse.affy.ST.array.annotation <- function(csv.file, mps.file=NULL, probes=NULL, char.limit=512, create.files=TRUE, verbose=TRUE) {
 	gene.info.rda.file <- NULL
 	gene.info.xls.file <- NULL

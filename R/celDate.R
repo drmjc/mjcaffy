@@ -1,4 +1,5 @@
 #' datestamp of Affymetrix CEL file
+#' 
 #' Extract the CEL file creation date stamp from within the CEL file header.
 #' 
 #' @param files a vector of Affymertrix CEL files.
