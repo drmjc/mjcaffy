@@ -1,15 +1,50 @@
 Package: mjcaffy
-Version: 0.1
-Date: 2004-10-26
-Title: Little Lab Affymetrix helper functions
-Author: Mark Cowley <mark.cowley@student.unsw.edu.au>
-Maintainer:  Mark Cowley <mark.cowley@student.unsw.edu.au>
-Depends: R (>= 2.2.0)
-Suggests:
-Description: Helper functions for dealing with Affymetrix data. Eg:
-	calc.trimmed.means(), calc.trimmed.data()
-License: GPL version 2 or newer
-URL: http://www.r-project.org, http://www.littlelab.bioinformatics.unsw.edu.au
-
+Version: 1.0.0
+Date: 2012-07-17
+Title: Affymetrix helper functions
+Author: Mark Cowley <m.cowley@garvan.org.au>
+Maintainer: Mark Cowley <m.cowley@garvan.org.au>
+Depends:
+    R(>= 2.10)
+Imports:
+    Biobase,
+    affy,
+    affyPLM,
+    affyio,
+    excelIO,
+    genomics,
+    metaGSEA,
+    methods,
+    mjcbase,
+    mjcgraphics,
+    oligo,
+    simpleaffy
+Description: Helper functions for dealing with Affymetrix data.
 Type: Package
 License: GPL-2
+Collate:
+    'affy.pivot.table.R'
+    'batchRMA.R'
+    'boxplot_affy.probetypes.R'
+    'calls2colour.R'
+    'cdfName-methods.R'
+    'celDate.R'
+    'convert.apt2gct.R'
+    'dabg2calls.R'
+    'find.nuse.cutoff.R'
+    'fitPLM.STarrays.R'
+    'hist_affycalls.R'
+    'hist_array_ranks.R'
+    'hist_DABG.R'
+    'import.affy.mps.R'
+    'import.APT.R'
+    'import.netaffx.csv.R'
+    'make.GSEA.chip.affyST.R'
+    'mjcaffy-package.R'
+    'normalise.R'
+    'parse.affy.apt.mrna_assignment.R'
+    'parse.affy.gff.R'
+    'parse.affyST.array.annotation.R'
+    'plot_rma-vs-calls.R'
+    'readCEL.R'
+    'run.dabg.R'
