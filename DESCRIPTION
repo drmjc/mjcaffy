@@ -1,11 +1,14 @@
 Package: mjcaffy
 Version: 1.0.0
-Date: 2012-07-17
+Date: 2012-07-24
 Title: Affymetrix helper functions
-Author: Mark Cowley <m.cowley@garvan.org.au>
+Description: Helper functions for importing, normalising, analysing and
+    plotting Affymetrix data.
+Author: Mark Cowley
 Maintainer: Mark Cowley <m.cowley@garvan.org.au>
 Depends:
-    R(>= 2.10)
+    R(>= 2.10),
+    excelIO
 Imports:
     Biobase,
     affy,
@@ -13,13 +16,11 @@ Imports:
     affyio,
     excelIO,
     genomics,
-    metaGSEA,
     methods,
     mjcbase,
     mjcgraphics,
     oligo,
     simpleaffy
-Description: Helper functions for dealing with Affymetrix data.
 Type: Package
 License: GPL-2
 Collate:
@@ -29,7 +30,6 @@ Collate:
     'calls2colour.R'
     'cdfName-methods.R'
     'celDate.R'
-    'convert.apt2gct.R'
     'dabg2calls.R'
     'find.nuse.cutoff.R'
     'fitPLM.STarrays.R'
