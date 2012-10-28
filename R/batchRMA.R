@@ -20,6 +20,7 @@
 #' @author Mark Cowley, 10 April 08
 #' @export
 #' @importFrom affy just.rma
+#' @importFrom Biobase exprs
 batchRMA <- function(files, batch) {
 	
 	batches <- unique(batch)

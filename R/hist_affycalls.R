@@ -23,8 +23,7 @@
 #'   dev.off()
 #' }
 #' @export
-#' @importFrom affy exprs
-#' @importFrom mjcgraphics axis.percentiles hgrid
+#' @importFrom Biobase exprs
 hist_affycalls <- function(calls, col=c("green", "orange", "red"), 
 							grid=TRUE, plot=TRUE, legend=TRUE, names.arg=colnames(calls), las=2) {
 	
@@ -71,8 +70,7 @@ hist_affycalls <- function(calls, col=c("green", "orange", "red"),
 #'   hist_Pcount_cumulative(calls=calls)
 #' }
 #' @export
-#' @importFrom affy exprs
-#' @importFrom mjcgraphics axis.percentiles hgrid
+#' @importFrom Biobase exprs
 hist_Pcount_cumulative <- function(Pcount=NULL, calls=NULL, grid=TRUE, plot=TRUE) {
 
 	if( is.null(calls) && is.null(Pcount) )

@@ -11,7 +11,8 @@
 #' 
 #' @author Mark Cowley, 1/4/08
 #' @export
-#' @importFrom affy read.affybatch exprs justRMA mas5calls
+#' @importFrom affy read.affybatch justRMA mas5calls
+#' @importFrom Biobase exprs
 plot_rma_vs_calls <- function(rma=NULL, calls=NULL, celfiles=NULL) {
 	
 	if( is.null(rma) && !is.null(celfiles) )
