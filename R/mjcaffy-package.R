@@ -15,5 +15,5 @@
 #' 
 #' Maintainer: Mark Cowley <m.cowley@@garvan.org.au>
 #' @keywords package
-#' @import methods mjcbase
+#' @import methods
 NULL

@@ -20,7 +20,6 @@
 #' @author Mark Cowley, 8 Nov 2005
 #' @export
 #' @importFrom affyPLM NUSE
-#' @importFrom mjcgraphics pdf.A4
 find.nuse.cutoff <- function(x, file=NULL, nplots=1, outlier.col="red", type=c("plot", "outliers")) {
     if( type[1] == "plot" && !is.null(file) )
         pdf.A4(file)

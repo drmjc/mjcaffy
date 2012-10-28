@@ -32,7 +32,6 @@
 #' 
 #' @author Mark Cowley, 3 June 2005
 #' @export
-#' @importFrom mjcgraphics auto.mfrow
 hist_array_ranks <- function(x, cols=NULL, abline=T, main=NULL, xlab="rank (low to high)", auto.mfrow=T, ...) {
 
 	if(is.null(cols))
