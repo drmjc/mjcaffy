@@ -2,7 +2,7 @@
 \alias{affy.pivot.table}
 \title{merge expression and calls together}
 \usage{
-  affy.pivot.table(exp, calls, file = NULL)
+  affy.pivot.table(exp, calls)
 }
 \arguments{
   \item{exp}{a \code{matrix}-like object of expression
@@ -10,8 +10,6 @@
 
   \item{calls}{a \code{matrix}-like object of detection
   calls (P/M/A)}
-
-  \item{file}{the output filename}
 }
 \value{
   none.
